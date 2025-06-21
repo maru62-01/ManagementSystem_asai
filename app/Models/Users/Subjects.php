@@ -9,6 +9,7 @@ use App\Models\Users\User;
 
 
 
+
 // Subjects.php
 class Subjects extends Model
 {
@@ -21,6 +22,6 @@ class Subjects extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'subject_users', 'user_id', 'subject_id', 'created_at'); // リレーションの定義
+        return $this->belongsToMany(User::class, 'subject_users', 'user_id', 'subject_id',); // リレーションの定義
     }
 }
