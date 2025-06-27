@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
 use App\Providers\RouteServiceProvider;
 use App\Models\Users\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -57,7 +59,8 @@ class RegisterController extends Controller
         return view('auth.register.register', compact('subjects'));
     }
 
-    public function registerPost(Request $request)
+
+    public function registerPost(RegisterUserRequest $request)
     {
         DB::beginTransaction();
         try {

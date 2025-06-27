@@ -11,6 +11,7 @@ class PostFormRequest extends FormRequest
      *
      * @return bool
      */
+    // リクエストが認可されるかどうかを決定するため
     public function authorize()
     {
         return true;
@@ -26,10 +27,12 @@ class PostFormRequest extends FormRequest
         return [
             'post_title' => 'min:4|max:50',
             'post_body' => 'min:10|max:500',
+
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
             'post_title.min' => 'タイトルは4文字以上入力してください。',
             'post_title.max' => 'タイトルは50文字以内で入力してください。',
