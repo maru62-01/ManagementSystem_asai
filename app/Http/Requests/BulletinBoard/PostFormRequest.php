@@ -10,6 +10,7 @@ class PostFormRequest extends FormRequest
      * Determine if the user is authorized to make this request.
      *
      * @return bool
+
      */
     // リクエストが認可されるかどうかを決定するため
     public function authorize()
