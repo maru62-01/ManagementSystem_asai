@@ -60,6 +60,7 @@ class RegisterController extends Controller
     }
 
 
+    // バリデーション定義
     public function registerPost(RegisterUserRequest $request)
     {
         DB::beginTransaction();
