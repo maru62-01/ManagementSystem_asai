@@ -201,9 +201,6 @@
                             <label>{{ $subject->subject }}</label>
                         </div>
                     @endforeach
-                    @error('subject')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
                 </div>
                 <div class="mt-3">
                     <label class="d-block m-0" style="font-size:13px">パスワード</label>

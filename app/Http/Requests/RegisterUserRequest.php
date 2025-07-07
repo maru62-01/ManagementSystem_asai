@@ -35,7 +35,7 @@ class RegisterUserRequest extends FormRequest
             // max:' . date('Y'),→現在の年を取得してそれ以上であったらエラー
             'old_month' => 'required|integer|min:1|max:12',
             'old_day' => 'required|integer|min:1|max:31',
-            'subject' => 'required|exists:subjects,id', // 科目はsubjectsテーブルのidと一致する必要がある
+            // 'subject' => 'required|exists:subjects,id', // 科目はsubjectsテーブルのidと一致する必要がある
             'role' => 'required|in:1,2,3,4', // 講師(国語)=1など
             'password' => 'required|string|min:8|max:30',
             'password_confirmation' => 'required|string|min:8|max:30|same:password',
@@ -99,8 +99,8 @@ class RegisterUserRequest extends FormRequest
             'role.required' => '役割を選択してください。',
             'role.in' => '役割の選択が正しくありません（講師・生徒などから選んでください）',
 
-            'subject.required' => '科目を選択してください',
-            'subject.exists' => '選択した科目が存在しません',
+            // 'subject.required' => '科目を選択してください',
+            // 'subject.exists' => '選択した科目が存在しません',
 
             'sex.required' => '性別を選択してください。',
             'sex.in' => '性別の選択が正しくありません（男性・女性・その他から選んでください）',
