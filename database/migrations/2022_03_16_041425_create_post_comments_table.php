@@ -14,11 +14,15 @@ class CreatePostCommentsTable extends Migration
     public function up()
     {
         Schema::create('post_comments', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->comment('id');
-            $table->integer('post_id')->comment('投稿のid');
-            $table->integer('user_id')->comment('投稿した人のid');
-            $table->string('comment')->comment('コメント');
-            $table->timestamp('created_at')->nullable()->comment('登録日時');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('post_id')->comment('投稿のID');
+            $table->unsignedBigInteger('user_id')->comment('投稿した人のID');
+            $table->text('comment')->comment('コメント');
+            $table->timestamps(); // created_at と updated_at を自動で追加
+
+            // 外部キー制約の追加
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

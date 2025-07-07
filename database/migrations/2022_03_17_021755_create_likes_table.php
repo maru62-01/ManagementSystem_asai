@@ -14,10 +14,14 @@ class CreateLikesTable extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->comment('id');
-            $table->integer('like_user_id')->comment('いいねした人のid');
-            $table->integer('like_post_id')->comment('いいねした投稿のid');
-            $table->timestamp('created_at')->nullable()->comment('登録日時');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('like_user_id')->comment('いいねした人のID');
+            $table->unsignedBigInteger('like_post_id')->comment('いいねした投稿のID');
+            $table->timestamps(); // created_at と updated_at を自動で追加
+
+            // 外部キー制約の追加
+            $table->foreign('like_user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('like_post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 

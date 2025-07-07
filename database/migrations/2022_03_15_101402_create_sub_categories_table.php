@@ -14,10 +14,13 @@ class CreateSubCategoriesTable extends Migration
     public function up()
     {
         Schema::create('sub_categories', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->comment('id');
-            $table->integer('main_category_id')->index()->comment('メインカテゴリーid');
-            $table->string('sub_category', 60)->index()->comment('サブカテゴリー');
-            $table->timestamp('created_at')->nullable()->comment('登録日時');
+            $table->increments('id')->unsigned();
+            $table->integer('main_category_id')->unsigned()->index()->comment('メインカテゴリーID');
+            $table->string('sub_category', 60)->index()->comment('サブカテゴリー名');
+            $table->timestamps(); // created_at と updated_at を自動で追加
+
+            // 外部キー制約の追加
+            $table->foreign('main_category_id')->references('id')->on('main_categories')->onDelete('cascade');
         });
     }
 

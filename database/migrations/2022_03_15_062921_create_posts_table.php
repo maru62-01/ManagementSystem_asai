@@ -14,11 +14,14 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement()->comment('id');
-            $table->integer('user_id')->comment('ユーザーid');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->comment('ユーザーID');
             $table->string('post_title', 191)->index()->comment('タイトル');
-            $table->string('post', 191)->index()->comment('投稿内容');
-            $table->timestamp('created_at')->nullable()->comment('登録日時');
+            $table->text('post')->comment('投稿内容');
+            $table->timestamps(); // created_at と updated_at を自動で追加
+
+            // 外部キー制約を追加
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
