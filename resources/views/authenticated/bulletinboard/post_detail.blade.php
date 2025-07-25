@@ -63,6 +63,10 @@
                 <div class="comment_area p-3">
                     <p class="m-0">コメントする</p>
                     <textarea class="w-100" name="comment" form="commentRequest"></textarea>
+                    @error('comment')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+
                     <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
                     <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
                     <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}

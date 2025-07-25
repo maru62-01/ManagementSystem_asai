@@ -39,6 +39,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
             @endforeach
         </div>
         <div class="other_area border w-25">
