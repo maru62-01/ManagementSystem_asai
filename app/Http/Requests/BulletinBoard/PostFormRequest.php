@@ -26,20 +26,52 @@ class PostFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'post_title' => 'min:4|max:50',
-            'post_body' => 'min:10|max:500',
-            'comment' => 'required|string|max:250',
+            'post_category_id' => 'required|exists:sub_categories,id',
+
+            'post_title' => 'required|max:50|string|',
+            'post_body' => 'required|max:500|string',
+            // 'comment' => 'required|string|max:250',
+            // 'main_category_name' => 'required|max:100|string|unique:main_categories,main_category',
+            // 'main_category_id' => 'required|exists:main_categories,id',
+            // 'sub_category_name' => 'required|string|max:100|unique:sub_categories,sub_category',
+            // exists 指定されたIDがDB上に存在するかを確認
+
+
         ];
     }
 
     public function messages()
     {
         return [
-            'post_title.min' => 'タイトルは4文字以上入力してください。',
+            'post_category_id.required' => 'カテゴリーは必須項目です。',
+            'post_category_id.exists' => '入力されたカテゴリーは登録されていません。',
+            'post_title.required' => 'タイトルは必須項目です。',
+            'post_title.string' => 'タイトルは文字列で入力してください。',
             'post_title.max' => 'タイトルは50文字以内で入力してください。',
-            'post_body.min' => '内容は10文字以上入力してください。',
+            'post_body.required' => '内容は必須項目です。',
+            'post_body.string' => '内容は文字列で入力してください。',
             'post_body.max' => '最大文字数は500文字です。',
-            'comment.reqired' => 'コメントは文字列で入力してください。',
+            // 'comment.required' => 'コメントは必須項目です。',
+            // 'comment.string' => 'コメントは文字列で入力してください。',
+            // 'comment.max' => 'コメントは250文字以内で入力してください。',
+
+            // 'main_category_name.required' => 'メインカテゴリーは必須項目です。',
+            // 'main_category_name.max' => 'メインカテゴリーは100文字以内です。',
+            // 'main_category_name.string' => 'メインカテゴリーは文字列で入力してください。',
+            // 'main_category_name.unique' => '入力されたメインカテゴリーはすでに登録済みです。',
+
+            // 'main_category_id.required' => 'メインカテゴリーは必須項目です。',
+            // 'main_category_id.exists' => '入力されたメインカテゴリーは登録されていません。',
+
+            // 'sub_category_name.required' => 'サブカテゴリーは必須項目です。',
+            // 'sub_category_name.string' => 'サブカテゴリーは文字列で入力してください。',
+            // 'sub_category_name.max' => 'サブカテゴリーは100文字以内です。',
+            // 'sub_category_name.unique' => '入力されたサブカテゴリー登録済みです。',
+
+
+
+
+
         ];
     }
 }
