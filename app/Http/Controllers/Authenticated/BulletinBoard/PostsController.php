@@ -177,10 +177,12 @@ class PostsController extends Controller
     // サブカテゴリーをクリックして関連する投稿の表示
     public function showBySubCategory($id)
     {
+        // サブカテゴリーを登録した投稿取得
         $posts = Post::with('user', 'postComments')
             ->whereHas('subCategories', function ($query) use ($id) {
                 $query->where('sub_category_id', $id);
             })
+            // サブカテゴリIDが$idと一致するサブカテゴリが紐づいている投稿だけ
             ->get();
 
         $categories = MainCategory::with('sub_categories')->get();
