@@ -101,6 +101,7 @@
                     <div class="w-50 m-auto edit-modal-btn d-flex">
                         <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
                         <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
+                        {{-- hiddenどの投稿をサーバーに伝えるかの隠しフィールド --}}
                         <input type="submit" class="btn btn-primary d-block" value="編集">
                     </div>
                 </div>

@@ -51,12 +51,33 @@
                 </div>
                 <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
                 <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
+                {{-- サブカテゴリーの表示 --}}
                 <ul>
                     @foreach ($categories as $category)
                         <li class="main_categories" category_id="{{ $category->id }}">
+                            <span>{{ $category->main_category }}</span>
+                        </li>
+                        @foreach ($category->sub_categories as $sub_category)
+                            <li>
+                                <a href="{{ route('posts.bySubCategory', ['id' => $sub_category->id]) }}"
+                                    class="category_btn">
+                                    {{ $sub_category->sub_category }}
+                                </a>
+                            </li>
+                        @endforeach
+                    @endforeach
+                    {{-- @foreach ($categories as $category)
+                        <li class="main_categories" category_id="{{ $category->id }}">
                             <span>{{ $category->main_category }}<span>
                         </li>
-                    @endforeach
+
+                        @foreach ($categories->sub_categories as $sub_category)
+                            <li value="{{ $sub_category->id }}">{{ $sub_category->sub_category }}
+                            </li>
+                        @endforeach
+                    @endforeach --}}
+
+
                 </ul>
             </div>
         </div>

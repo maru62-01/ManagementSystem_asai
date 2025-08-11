@@ -8,32 +8,55 @@ use Illuminate\Http\Request;
 use App\Models\Categories\MainCategory;
 use App\Models\Categories\SubCategory;
 use App\Models\Posts\Post;
+
+
+
 use App\Models\Posts\PostComment;
 use App\Models\Posts\Like;
 use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\SubCategoryRequest;
+use App\Http\Requests\StoreCommentRequest;
+
 use Auth;
 
 class PostsController extends Controller
 {
+    // キーワード検索について
     public function show(Request $request)
     {
+
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
         $like = new Like;
         $post_comment = new Post;
         if (!empty($request->keyword)) {
-            $posts = Post::with('user', 'postComments')
-                ->where('post_title', 'like', '%' . $request->keyword . '%')
-                ->orWhere('post', 'like', '%' . $request->keyword . '%')->get();
-        } else if ($request->category_word) {
-            $sub_category = $request->category_word;
-            $posts = Post::with('user', 'postComments')->get();
+
+            // まずサブカテゴリー完全一致を探す
+            $subCategory = SubCategory::where('sub_category', $request->keyword)->first();
+            // sub_categoryカラムの値が$request->keywordと完全一致したらfirstで最初の一件を取り出す
+            if ($subCategory) {
+                $posts = Post::with('user', 'postComments')
+                    ->whereHas('subCategories', function ($query) use ($subCategory) {
+                        $query->where('sub_category_id', $subCategory->id);
+                    })
+                    ->get();
+                // whereHas→リレーション先のテーブルの条件で検索したいとき
+                // $query⇒リレーション先のテーブル【subCategories】を操作するクエリ
+
+            } else {
+                // 見つからなければ通常のキーワード検索【】
+                $posts = Post::with('user', 'postComments')
+                    ->where('post_title', 'like', '%' . $request->keyword . '%')
+                    ->orWhere('post', 'like', '%' . $request->keyword . '%')
+                    ->get();
+            }
+            // いいねlike_posts
         } else if ($request->like_posts) {
             $likes = Auth::user()->likePostId()->get('like_post_id');
             $posts = Post::with('user', 'postComments')
                 ->whereIn('id', $likes)->get();
+            // 自分の投稿my_posts
         } else if ($request->my_posts) {
             $posts = Post::with('user', 'postComments')
                 ->where('user_id', Auth::id())->get();
@@ -97,7 +120,8 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    public function commentCreate(PostFormRequest $request)
+
+    public function commentCreate(StoreCommentRequest $request)
     {
         PostComment::create([
             'post_id' => $request->post_id,
@@ -148,5 +172,22 @@ class PostsController extends Controller
             ->delete();
 
         return response()->json();
+    }
+
+    // サブカテゴリーをクリックして関連する投稿の表示
+    public function showBySubCategory($id)
+    {
+        $posts = Post::with('user', 'postComments')
+            ->whereHas('subCategories', function ($query) use ($id) {
+                $query->where('sub_category_id', $id);
+            })
+            ->get();
+
+        $categories = MainCategory::with('sub_categories')->get();
+        $like = new Like;
+        $post_comment = new Post;
+
+        // 今のページで表示
+        return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
     }
 }
