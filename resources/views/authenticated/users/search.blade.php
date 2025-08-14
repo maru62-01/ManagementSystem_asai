@@ -99,7 +99,9 @@
                             @foreach ($subject_lists as $subject_list)
                                 <div>
                                     <label>{{ $subject_list->subject }}</label>
-                                    <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
+                                    <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}"
+                                        form="userSearchRequest">
+                                    {{-- []複数選択 --}}
                                 </div>
                             @endforeach
 
