@@ -13,9 +13,10 @@ class SearchResultFactories
         if ($category == 'name') {
             if (empty($subjects)) {
                 $searchResults = new SelectNames();
-                // 空かどうかの確認を行う配列、変数
+                // empty　空かどうかの確認を行う配列、変数
             } else {
                 $searchResults = new SelectNameDetails();
+                // 空じゃ無かったらSelectNameDetailsの実装
             }
             return $searchResults->resultUsers($keyword, $category, $updown, $gender, $role, $subjects);
         } else if ($category == 'id') {
