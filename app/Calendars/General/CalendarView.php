@@ -72,7 +72,9 @@ class CalendarView
                             $reservePart = "リモ3部参加";
                         }
                         $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
+                        // hidden inputで部と日付を両方送る
                         $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+                        // $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
                     } else {
                         // 【予約アリ】未来日→削除ボタン＆「リモ〇部」
                         if ($reservePart == 1) {
@@ -83,13 +85,16 @@ class CalendarView
                             $reservePart = "リモ3部";
                         }
                         $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '">' . $reservePart . '</button>';
-                        $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+                        // hidden inputで部と日付を両方送る
+                        $html[] = '<input type="hidden" name="getPart[]" value="' . $reservePart . '" form="reserveParts">';
+                        $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
                     }
                 } else {
-                    // 予約がない場
+                    // 予約がない場合
                     if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
                         //【予約ナシ】過去日→(受付終了)の文字
                         $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+                        $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
                     } else {
                         //【予約アリ】未来日→予約ボタン
                         $html[] = $day->selectPart($day->everyDay());
