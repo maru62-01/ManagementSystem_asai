@@ -84,10 +84,19 @@ class CalendarView
                         } else if ($reservePart == 3) {
                             $reservePart = "リモ3部";
                         }
-                        $html[] = '<button type="submit" class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '">' . $reservePart . '</button>';
+                        $html[] = '<button type="button" class="btn btn-danger p-0 w-75 js-delete-btn"
+                        data-date="' . $day->everyDay() . '"
+                        data-part="' . $day->authReserveDate($day->everyDay())->first()->setting_part . '"
+                        style="font-size:12px">' . $reservePart . '</button>';
+                        // data- で始まる属性⇒任意のデータを埋め込むための属性
+                        // jsのvar reserveDate = $(this).data('date');につながる
+
+
+                        // $html[] = '<button type="submit"
+                        // class="btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px" value="' . $day->authReserveDate($day->everyDay())->first()->setting_reserve . '">' . $reservePart . '</button>';
                         // hidden inputで部と日付を両方送る
-                        $html[] = '<input type="hidden" name="getPart[]" value="' . $reservePart . '" form="reserveParts">';
-                        $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
+                        $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+                        // $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
                     }
                 } else {
                     // 予約がない場合

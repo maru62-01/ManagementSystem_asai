@@ -85,6 +85,11 @@ class PostsController extends Controller
             'post' => $request->post_body,
         ]);
         $post->subCategories()->attach($request->post_category_id);
+        // 'post_title' → データベースの入れ物（カラム名）
+        // $request->post_title → フォームから送られた実際の値
+        // 左：文字列 'post_title' → 保存先のカラム名
+        // 右：変数 $request->post_title → 保存するデータ（ユーザー入力）
+
 
         return redirect()->route('post.show');
     }
