@@ -1,26 +1,24 @@
 $('.js-delete-btn').on('click', function () {
-    $('.js-delete-btn').on('click', function () {
-        $('.js-modal').fadeIn();
+    $('.js-modal').fadeIn();
 
-        // date属性から値を取得
-        var reserveDate = $(this).data('date');
-        var reservePart = $(this).data('part');
+    // date属性から値を取得
+    var reserveDate = $(this).data('date');
+    var reservePart = $(this).data('part');
 
-        // モーダルに値をセット（表示用）
-        $('.modal-reserve-date').text(reserveDate);
-        $('.modal-reserve-part').text("リモ" + reservePart + "部");
+    // モーダルに値をセット（表示用）
+    $('.modal-reserve-date').text(reserveDate);
+    $('.modal-reserve-part').text("リモ" + reservePart + "部");
 
-        // モーダル内 hidden input に値をセット（送信用
-        $('.modal-input-date').val(reserveDate);
-        $('.modal-input-part').val(reservePart);
+    // モーダル内 hidden input に値をセット（送信用
+    $('.modal-input-date').val(reserveDate);
+    $('.modal-input-part').val(reservePart);
 
-        return false;
-    });
+    return false;
+});
 
-    $('.js-modal-close').on('click', function () {
-        $('.js-modal').fadeOut();
-        return false;
-    });
+$('.js-modal-close').on('click', function () {
+    $('.js-modal').fadeOut();
+    return false;
 });
 
 // / $(function () {

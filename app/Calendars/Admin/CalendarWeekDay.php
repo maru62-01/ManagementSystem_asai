@@ -9,6 +9,7 @@ class CalendarWeekDay
 {
     protected $carbon;
 
+    // 予約確認画面
     function __construct($date)
     {
         $this->carbon = new Carbon($date);
@@ -40,16 +41,30 @@ class CalendarWeekDay
         $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
         $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
+        // Route::get('/calendar/{date}/{part}', 'CalendarsController@reserveDetail')->name('calendar.admin.detail');
+
         $html[] = '<div class="text-left">';
         if ($one_part) {
-            $html[] = '<p class="day_part m-0 pt-1">1部 <span>' . $one_part->users->count() . '</span></p>';
-            // $one_part->users->count()　予約人数を表示
+            $html[] = '<p class="day_part m-0 pt-1">
+        <a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 1]) . '">1部</a>
+        <span>' . $one_part->users->count() . '</span>
+    </p>';
         }
         if ($two_part) {
-            $html[] = '<p class="day_part m-0 pt-1">2部 <span>' . $two_part->users->count() . '</span></p>';
+            $html[] = '<p class="day_part m-0 pt-1">
+        <a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 2]) . '">
+            2部
+        </a>
+        <span>' . $two_part->users->count() . '</span>
+    </p>';
         }
         if ($three_part) {
-            $html[] = '<p class="day_part m-0 pt-1">3部 <span>' . $three_part->users->count() . '</span></p>';
+            $html[] = '<p class="day_part m-0 pt-1">
+        <a href="' . route('calendar.admin.detail', ['date' => $ymd, 'part' => 3]) . '">
+            3部
+        </a>
+        <span>' . $three_part->users->count() . '</span>
+    </p>';
         }
         $html[] = '</div>';
 

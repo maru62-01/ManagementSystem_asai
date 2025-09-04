@@ -14,29 +14,44 @@ use DB;
 
 class CalendarsController extends Controller
 {
-    public function show(){
+    public function show()
+    {
         $calendar = new CalendarView(time());
         return view('authenticated.calendar.admin.calendar', compact('calendar'));
     }
 
-    public function reserveDetail($date, $part){
+    // ユーザー予約詳細画面
+    public function reserveDetail($date, $part)
+    {
+        // ReserveSettings モデル（予約設定テーブル）から、
+        // 指定の日付 & 部分 のデータを取り出す
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->get();
-        return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
+        // ユーザー一覧を渡す
+        $users = $reservePersons ? $reservePersons->users : collect();
+        dd($users);
+        return view(
+            'authenticated.calendar.admin.reserve_detail',
+            compact('reservePersons', 'date', 'part', 'users')
+        );
     }
 
-    public function reserveSettings(){
+
+
+    public function reserveSettings()
+    {
         $calendar = new CalendarSettingView(time());
         return view('authenticated.calendar.admin.reserve_setting', compact('calendar'));
     }
 
-    public function updateSettings(Request $request){
+    public function updateSettings(Request $request)
+    {
         $reserveDays = $request->input('reserve_day');
-        foreach($reserveDays as $day => $parts){
-            foreach($parts as $part => $frame){
+        foreach ($reserveDays as $day => $parts) {
+            foreach ($parts as $part => $frame) {
                 ReserveSettings::updateOrCreate([
                     'setting_reserve' => $day,
                     'setting_part' => $part,
-                ],[
+                ], [
                     'setting_reserve' => $day,
                     'setting_part' => $part,
                     'limit_users' => $frame,
