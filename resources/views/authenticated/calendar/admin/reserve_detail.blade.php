@@ -11,13 +11,18 @@
                         <th class="w-25">名前 </th>
                         <th class="w-25">場所</th>
                     </tr>
-                    {{-- @foreach ($users as $user)
-                        <tr class="text-center">
-                            <td class="w-25">{{ $user->user_id }}</td>
-                            <td class="w-25">{{ $user->user_name }}</td>
-                            <td class="w-25">{{ $user->pivot->location ?? 'リモート' }}</td>
-                        </tr>
-                    @endforeach --}}
+                    {{-- 予約者情報の一覧を表示　
+                      $reservePersons にusers情報がはいっている --}}
+                    @foreach ($reservePersons as $reserve)
+                        @foreach ($reserve->users as $user)
+                            {{-- foreach (配列やコレクション as 一時変数) { 繰り返し処理 } --}}
+                            <tr class="text-center">
+                                <td class="w-25">{{ $user->id }}</td>
+                                <td class="w-25">{{ $user->over_name }} {{ $user->under_name }}</td>
+                                <td class="w-25">{{ $user->pivot->location ?? 'リモート' }}</td>
+                            </tr>
+                        @endforeach
+                    @endforeach
                 </table>
             </div>
         </div>

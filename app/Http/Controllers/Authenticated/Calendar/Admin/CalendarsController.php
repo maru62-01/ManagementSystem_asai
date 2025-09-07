@@ -25,13 +25,13 @@ class CalendarsController extends Controller
     {
         // ReserveSettings モデル（予約設定テーブル）から、
         // 指定の日付 & 部分 のデータを取り出す
+        // 指定日・部の予約者を取得
         $reservePersons = ReserveSettings::with('users')->where('setting_reserve', $date)->where('setting_part', $part)->get();
-        // ユーザー一覧を渡す
-        $users = $reservePersons ? $reservePersons->users : collect();
-        dd($users);
+
         return view(
             'authenticated.calendar.admin.reserve_detail',
-            compact('reservePersons', 'date', 'part', 'users')
+            compact('reservePersons', 'date', 'part',)
+            // compact　文字列で指定した変数名をキーとして、対応する変数の「名前 → 値」の連想配列を作ってくれる関数
         );
     }
 
