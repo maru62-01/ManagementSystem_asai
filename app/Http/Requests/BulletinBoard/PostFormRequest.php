@@ -28,8 +28,8 @@ class PostFormRequest extends FormRequest
         return [
             'post_category_id' => 'required|exists:sub_categories,id',
 
-            'post_title' => 'required|max:50|string|',
-            'post_body' => 'required|max:500|string',
+            'post_title' => 'required|max:100|string|',
+            'post_body' => 'required|max:5000|string',
             // 'comment' => 'required|string|max:250',
             // 'main_category_name' => 'required|max:100|string|unique:main_categories,main_category',
             // 'main_category_id' => 'required|exists:main_categories,id',
@@ -47,10 +47,10 @@ class PostFormRequest extends FormRequest
             'post_category_id.exists' => '入力されたカテゴリーは登録されていません。',
             'post_title.required' => 'タイトルは必須項目です。',
             'post_title.string' => 'タイトルは文字列で入力してください。',
-            'post_title.max' => 'タイトルは50文字以内で入力してください。',
+            'post_title.max' => 'タイトルは100文字以内で入力してください。',
             'post_body.required' => '内容は必須項目です。',
             'post_body.string' => '内容は文字列で入力してください。',
-            'post_body.max' => '最大文字数は500文字です。',
+            'post_body.max' => '最大文字数は5000文字です。',
             // 'comment.required' => 'コメントは必須項目です。',
             // 'comment.string' => 'コメントは文字列で入力してください。',
             // 'comment.max' => 'コメントは250文字以内で入力してください。',
