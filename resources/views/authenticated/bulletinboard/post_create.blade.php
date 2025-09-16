@@ -58,6 +58,10 @@
                         {{ csrf_field() }}
                         <div class="">
                             <p class="m-0">メインカテゴリー</p>
+                            @error('main_category_name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+
                             <input type="text" class="w-100" name="main_category_name">
                         </div>
 
@@ -73,16 +77,16 @@
                         {{ csrf_field() }}
                         <div class="">
                             <p class="m-0">サブカテゴリー</p>
+                            @error('sub_category_name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+
                             {{-- メインカテゴリーの選択 --}}
                             <select class="w-100" name="main_category_id">
                                 @foreach ($main_categories as $main_category)
                                     <option value="{{ $main_category->id }}">
                                         {{ $main_category->main_category }}
                                     </option>
-
-                                    @error('main_category_id')
-                                        <div class="text-danger">{{ $message }}</div>
-                                    @enderror
                                 @endforeach
                             </select>
                             {{-- メインカテゴリーの選択終わり --}}
@@ -92,9 +96,6 @@
                         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
                         {{-- サブカテゴリーの終わり --}}
 
-                        @error('sub_category_name')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
                     </form>
 
 

@@ -2,7 +2,7 @@
 {{-- スクール予約確認画面 --}}
 @section('content')
     <div class="w-75 m-auto">
-        <div class="w-100">
+        <div class="w-100 input-back">
             <p>{{ $calendar->getTitle() }}</p>
             <p>{!! $calendar->render() !!}</p>
 

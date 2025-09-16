@@ -2,7 +2,7 @@
 @section('content')
     <div class="vh-100 d-flex">
         <div class="w-50 mt-5">
-            <div class="m-3 detail_container">
+            <div class="m-3 detail_container input-radius">
                 <div class="p-3">
                     <div class="detail_inner_head">
                         {{-- Auth::id() 現在ログインしているユーザーのID --}}
@@ -60,15 +60,17 @@
         </div>
         <div class="w-50 p-3">
             <div class="comment_container border m-5">
-                <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}
+                <form action="{{ route('comment.create') }}" method="post" id="commentRequest" class="input-radius">
+                    {{ csrf_field() }}
 
                     <div class="comment_area p-3">
                         <p class="m-0">コメントする</p>
-                        <textarea class="w-100" name="comment" form="commentRequest"></textarea>
                         @error('comment')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
 
+
+                        <textarea class="w-100" name="comment" form="commentRequest"></textarea>
                         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
                         <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
                     </div>
@@ -85,21 +87,19 @@
                 @csrf
                 <div class="w-100">
                     <div class="modal-inner-title w-50 m-auto">
-                        <input type="text" name="post_title" placeholder="タイトル" class="w-100">
                         @error('post_title')
-                            <div class="text-danger">{{ $message }}
-                            </div>
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
+                        <input type="text" name="post_title" placeholder="タイトル" class="w-100">
                     </div>
-                    <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
-                        <textarea placeholder="投稿内容" name="post_body" class="w-100">
-                        </textarea>
-                        @error('post_body')
-                            <div class="text-danger">{{ $message }}
-                            </div>
-                        @enderror
 
+                    <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
+                        @error('post_body')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
                     </div>
+
                     <div class="w-50 m-auto edit-modal-btn d-flex">
                         <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
                         <input type="hidden" class="edit-modal-hidden" name="post_id" value="{{ $post->id }}">

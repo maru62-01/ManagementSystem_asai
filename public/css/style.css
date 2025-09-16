@@ -28,9 +28,36 @@ li {
     width: 100%;
 }
 
+h1 {
+    text-align: center;
+}
+
+.atlas-icon {
+    height: 80px;
+}
+
 .sidebar p a {
     color: #FFF;
 }
+
+/*  ログインページ*/
+.input-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* 丸みを持たせる */
+    border-radius: 8px;
+}
+
+.input-radius {
+    border-radius: 8px;
+}
+
+.input-back {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+}
+
+
 
 /* トップページ */
 .user_status {
