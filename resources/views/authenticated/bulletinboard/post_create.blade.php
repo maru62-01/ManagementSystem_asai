@@ -57,10 +57,11 @@
                     <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">
                         {{ csrf_field() }}
                         <div class="">
-                            <p class="m-0">メインカテゴリー</p>
                             @error('main_category_name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
+
+                            <p class="m-0">メインカテゴリー</p>
 
                             <input type="text" class="w-100" name="main_category_name">
                         </div>
@@ -76,10 +77,11 @@
                     <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">
                         {{ csrf_field() }}
                         <div class="">
-                            <p class="m-0">サブカテゴリー</p>
                             @error('sub_category_name')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
+
+                            <p class="m-0">サブカテゴリー</p>
 
                             {{-- メインカテゴリーの選択 --}}
                             <select class="w-100" name="main_category_id">

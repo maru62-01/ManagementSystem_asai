@@ -3,6 +3,7 @@
     {{-- スクール枠登録画面 --}}
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
         <div class="w-100 vh-100 border p-5">
+            {{-- border w-75 m-auto pt-5 pb-5？ --}}
             <p>{{ $calendar->getTitle() }}</p>
             {!! $calendar->render() !!}
             <div class="adjust-table-btn m-auto text-right">

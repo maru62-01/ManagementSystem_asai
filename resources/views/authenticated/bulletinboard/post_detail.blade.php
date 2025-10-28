@@ -5,12 +5,23 @@
             <div class="m-3 detail_container input-radius">
                 <div class="p-3">
                     <div class="detail_inner_head">
+                        @if ($post->subCategories->isNotEmpty())
+                            {{-- isNotEmpty 空じゃない時 --}}
+                            <div class="mt-2">
+                                @foreach ($post->subCategories as $subCategory)
+                                    <span class="badge badge-primary text-white" style="background-color: #03aad2;">
+                                        {{ $subCategory->sub_category }}
+                                    </span>
+                                @endforeach
+                            </div>
+                        @endif
+
                         {{-- Auth::id() 現在ログインしているユーザーのID --}}
                         {{--  $post->user_id  -> そのデータの中の(投稿テーブル)投稿をとりだす --}}
                         @auth
                             @if (Auth::id() === $post->user_id)
-                                <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}"
-                                    post_id="{{ $post->id }}">
+                                <span class="edit-modal-open btn btn-primary btn-edit" post_title="{{ $post->post_title }}"
+                                    post_body="{{ $post->post }}" post_id="{{ $post->id }}">
                                     編集
                                 </span>
                             @endif
@@ -21,10 +32,10 @@
                         @auth
                             @if (Auth::id() === $post->user_id)
                                 <P>
-                                    <a class="trash-btn" href="{{ route('post.delete', ['id' => $post->id]) }}"
+                                    <a class="trash-btn  btn btn-danger d-inline-block btn-edit "
+                                        href="{{ route('post.delete', ['id' => $post->id]) }}"
                                         onclick="return confirm('この投稿を削除します。よろしいですか？')">削除
                                     </a>
-
 
                                     {{-- <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a> --}}
                             @endif

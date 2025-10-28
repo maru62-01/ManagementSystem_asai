@@ -3,7 +3,7 @@
 @section('content')
     <div class="vh-100 border">
         <div class="top_area w-75 m-auto pt-5">
-            <p>マイページ</p>
+            <p class="profile">自分のプロフィール</p>
             <div class="user_status p-3 input-shadow">
                 <p>名前：<span>{{ Auth::user()->over_name }}</span><span class="ml-1">{{ Auth::user()->under_name }}</span>
                 </p>

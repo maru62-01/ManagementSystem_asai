@@ -18,7 +18,7 @@ li {
 
 /* サイドバー */
 .sidebar {
-    width: 150px;
+    width: 175px;
     height: 100vh;
     background-color: #03AAD2;
     font-weight: bold;
@@ -33,6 +33,11 @@ h1 {
 }
 
 .atlas-icon {
+    margin-bottom: 40px;
+    margin-top: 90px;
+}
+
+.atlas-icon {
     height: 80px;
 }
 
@@ -42,9 +47,9 @@ h1 {
 
 /*  ログインページ*/
 .input-shadow {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
     /* 丸みを持たせる */
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .input-radius {
@@ -52,12 +57,30 @@ h1 {
 }
 
 .input-back {
+    margin-top: 45px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 40px;
 }
 
+.calendar-table,
+.calendar-table th,
+.calendar-table tr {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
 
+.calendar-td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    min-width: 100px;
+}
+
+/* 予約ページ */
+.primary {
+    margin-top: 20px;
+    margin-right: -17%;
+}
 
 /* トップページ */
 .user_status {
@@ -86,9 +109,6 @@ h1 {
     background-color: #e0e0e0;
 }
 
-.calendar-td {
-    min-width: 100px;
-}
 
 .day_part {
     color: #494949;
@@ -163,12 +183,119 @@ h1 {
 }
 
 .post_bottom_area {
-    justify-content: space-between;
+    justify-content: end;
 }
 
+.text-btn {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-color: #04a9d2;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* 検索ボタン */
+.search-btn {
+    width: 80px;
+    height: 50px;
+    border: 2px solid #04a9d2;
+    color: #fff;
+    background-color: #04a9d2;
+    border-radius: 0px 5px 5px 0px
+}
+
+
+/* キーワード検索 */
+.search-input {
+    margin-right: -5px;
+    height: 50px;
+    width: 76%;
+    border: 2px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #ecf1f6;
+}
+
+.bottom_area {
+    display: flex;
+    justify-content: center;
+}
+
+/* いいねした投稿ボタン */
+.btn-like {
+    border-radius: 5px;
+    background-color: #f48fb1;
+    /* 柔らかいピンク */
+    color: #fff;
+    border: none;
+    width: 155px;
+    height: 38px;
+    margin-right: 3px;
+}
+
+/* 自分の投稿ボタン */
+.btn-my {
+    border-radius: 5px;
+    background-color: #fbc02d;
+    /* 黄色寄りのオレンジ */
+    color: #fff;
+    border: none;
+    width: 155px;
+    height: 38px;
+}
+
+.btn-edit {
+
+    height: 38px;
+    width: 70px;
+    margin: 3px;
+}
+
+.mr-5 {
+    display: flex;
+}
+
+.username {
+    color: #a9a9a9;
+    font-weight: bold;
+}
+
+.text-center {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 投稿するときのタイトル */
+.title {
+    color: #000000;
+    font-weight: 600;
+    /* 文字の太さ */
+}
+
+/* topページのプロフィール */
+.profile {
+    font-size: 20px;
+    margin-left: -145px;
+    /* ↑これでいいのか？ */
+    margin-top: -40px;
+    margin-bottom: 65px;
+}
+
+
+/* コメントアイコン＆数 */
+.fa-comment {
+    color: #a9a9a9;
+    margin-right: 40px;
+    /* コメントの右に余白 */
+    margin-top: 3px;
+}
+
+/* いいねアイコン＆数 */
 .like_btn,
 .un_like_btn {
+    color: #a9a9a9;
     cursor: pointer;
+    margin-left: 30px;
 }
 
 .un_like,
@@ -269,7 +396,7 @@ h1 {
     border-radius: 5px;
     padding: 0 5px;
     border: none;
-    background: #999;
+    background: #ecf1f6;
     color: #FFF;
 }
 
@@ -318,4 +445,92 @@ h1 {
 
 .subject_inner {
     display: none;
+}
+
+.category {
+    margin-top: 20px;
+}
+
+/* ===================== */
+/* カテゴリーアコーディオン */
+/* ===================== */
+
+.accordion-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 355px;
+    overflow: hidden;
+}
+
+
+/* チェックボックスを隠す */
+.accordion-toggle {
+    display: none;
+}
+
+/* メインカテゴリラベル */
+.accordion-label {
+    border-bottom: 2px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #ecf1f6;
+    transition: background-color 0.3s ease;
+}
+
+/* ホバー時 */
+.accordion-label:hover {
+    background-color: #ecf1f6;
+}
+
+/* 矢印マーク */
+.accordion-label .arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+/* サブカテゴリ（初期は非表示） */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background-color: #ecf1f6;
+}
+
+/* 開いた時にサブカテゴリ表示 */
+.accordion-toggle:checked~.accordion-content {
+    max-height: 500px;
+    /* 開いたときの高さ。サブカテゴリ数に応じて調整 */
+}
+
+/* 開いたときに矢印を上向きにする */
+.accordion-toggle:checked+.accordion-label .arrow {
+    transform: rotate(-135deg);
+}
+
+/* サブカテゴリのリンク */
+.accordion-content li {
+    border-top: 1px solid #eee;
+}
+
+.accordion-content a {
+    margin-left: 20px;
+    width: 250px;
+    border-bottom: 2px solid #ccc;
+    display: block;
+    padding-top: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.accordion-content a:hover {
+    background-color: #ecf1f6;
 }
