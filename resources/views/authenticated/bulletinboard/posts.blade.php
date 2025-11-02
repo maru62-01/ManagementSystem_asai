@@ -61,8 +61,8 @@
                 </div>
             @endforeach
         </div>
-        <div class="other_area border w-25">
-            <div class="border m-4">
+        <div class="other_area w-25">
+            <div class="side_area m-4">
                 <p class="text-center"><a href="{{ route('post.input') }}" class="text-btn w-100">投稿</a>
                     {{-- w-100 横幅を１００％にする --}}
                 </p>
