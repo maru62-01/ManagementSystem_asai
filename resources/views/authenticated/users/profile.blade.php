@@ -20,16 +20,21 @@
                 <div class="">
                     @can('admin')
                         {{-- コンテンツの表示非表示 --}}
-                        <span class="subject_edit_btn">選択科目の編集</span>
+                        <input type="checkbox" id="profile_toggle" class="profile_conditions_toggle">
+                        <label for="profile_toggle" class="m-0 profile_conditions">
+                            <span class="subject_edit_btn">選択科目の編集</span>
+                            <span class="profile_arrow"></span>
+                        </label>
+
                         <div class="subject_inner">
-                            <form action="{{ route('user.edit') }}" method="post">
+                            <form class="subject_form" action="{{ route('user.edit') }}" method="post">
                                 @foreach ($subject_lists as $subject_list)
-                                    <div>
+                                    <div class="subject_item">
                                         <label>{{ $subject_list->subject }}</label>
                                         <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
                                     </div>
                                 @endforeach
-                                <input type="submit" value="編集" class="btn btn-primary">
+                                <input type="submit" value="登録" class="btn btn-primary">
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 {{ csrf_field() }}
                             </form>

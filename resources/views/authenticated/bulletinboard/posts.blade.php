@@ -66,11 +66,11 @@
                 <p class="text-center"><a href="{{ route('post.input') }}" class="text-btn w-100">投稿</a>
                     {{-- w-100 横幅を１００％にする --}}
                 </p>
-                <p>
+                <div class="search_post_area">
                     <input type="text" placeholder="キーワードを検索" name="keyword"
                         class="search-input"form="postSearchRequest">
-                    <input type="submit" class="search-btn" value="検索" form="postSearchRequest">
-                </p>
+                    <input type="submit" class="search-post-btn" value="検索" form="postSearchRequest">
+                </div>
             </div>
             <div class="bottom_area">
                 <input type="submit" name="like_posts" class="btn-like" value="いいねした投稿" form="postSearchRequest">

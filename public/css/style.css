@@ -7,6 +7,12 @@
 }
 
 /* body */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 .all_content {
     background: #ECF1F6;
 }
@@ -18,10 +24,12 @@ li {
 
 /* サイドバー */
 .sidebar {
+    padding-top: 15px;
     width: 175px;
-    height: 100vh;
     background-color: #03AAD2;
     font-weight: bold;
+    min-height: 100vh;
+    /* または height:100vh */
 }
 
 .main-container {
@@ -56,7 +64,19 @@ h1 {
     border-radius: 8px;
 }
 
+/* スクール予約確認 */
 .input-back {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-top: 45px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+}
+
+/* ユーザー枠登録 */
+.input-back-two {
+    border-radius: 10px;
     margin-top: 45px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -187,22 +207,35 @@ h1 {
 }
 
 .text-btn {
-    display: block;
+    display: flex;
+    justify-content: center;
+    /* 横方向中央 */
+    align-items: center;
+    /* 縦方向中央 */
     width: 100%;
     height: 40px;
     background-color: #04a9d2;
     color: #fff;
     border-radius: 5px;
+    text-decoration: none;
+    /* 下線を消す */
+    /* display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #04a9d2;
+    color: #fff;
+    border-radius: 5px; */
 }
 
 /* 検索ボタン */
 .search-btn {
-    width: 80px;
+    margin-top: 20px;
+    width: 70%;
     height: 50px;
     border: 2px solid #04a9d2;
     color: #fff;
     background-color: #04a9d2;
-    border-radius: 0px 5px 5px 0px
+    border-radius: 5px;
 }
 
 
@@ -210,10 +243,25 @@ h1 {
 .search-input {
     margin-right: -5px;
     height: 50px;
-    width: 76%;
+    width: 140%;
     border: 2px solid #dee2e6;
-    border-radius: 5px;
+    border-radius: 10px 0 0 10px;
     background-color: #ecf1f6;
+}
+
+.search-post-btn {
+    border: none;
+    outline: none;
+    display: block;
+    width: 70%;
+    height: 49px;
+    background-color: #04a9d2;
+    color: #fff;
+    border-radius: 0px 10px 10px 0;
+}
+
+.search_post_area {
+    display: flex;
 }
 
 .bottom_area {
@@ -223,24 +271,24 @@ h1 {
 
 /* いいねした投稿ボタン */
 .btn-like {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #f48fb1;
     /* 柔らかいピンク */
     color: #fff;
     border: none;
-    width: 155px;
+    width: 160px;
     height: 38px;
     margin-right: 3px;
 }
 
 /* 自分の投稿ボタン */
 .btn-my {
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #fbc02d;
     /* 黄色寄りのオレンジ */
     color: #fff;
     border: none;
-    width: 155px;
+    width: 160px;
     height: 38px;
 }
 
@@ -261,8 +309,67 @@ h1 {
 }
 
 .text-center {
+    margin-top: 45px;
     margin-bottom: 20px;
-    text-align: center;
+}
+
+/* スクール予約詳細画面 */
+.date-day {
+    font-size: 20px;
+}
+
+.detail-table {
+    padding-top: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.text-table {
+    margin: auto;
+    width: 98%;
+    border-collapse: collapse;
+}
+
+.text-main-center {
+    background-color: #03aad2;
+}
+
+.text-sub {
+    padding-left: 60px;
+    color: #fff;
+}
+
+.text-sub-name {
+    color: #fff;
+}
+
+.text-detail-center {
+    height: 39px;
+    text-align: center !important;
+}
+
+/* 一行ずつ色を変える */
+.row-odd {
+    background-color: #ffffff;
+}
+
+.row-even {
+    background-color: #03aad21c;
+}
+
+.detail {
+    margin-top: 6px;
+    margin-left: 35px;
+    float: left;
+}
+
+.detail-name {
+    padding-right: 180px;
+}
+
+.detail-remote {
+    padding-right: 105px;
 }
 
 /* 投稿するときのタイトル */
@@ -419,12 +526,29 @@ h1 {
     border-radius: 5px;
 }
 
+/* .reserve_users_area::-webkit-scrollbar-track {
+    background-color: #e4e4e4; */
+/* } */
+
 .reserve_users_area span {
     font-size: 12px;
 }
 
+/* スクロールバーの幅 */
+/* .reserve_users_area::-webkit-scrollbar {
+    width: 8px;
+} */
+
+/* ← スクロールする部分（つまみ） */
+/* .reserve_users_area::-webkit-scrollbar-thumb {
+    background-color: #a4b0be;
+    border-radius: 5px;
+} */
+
+/* スクロール部分の背景 */
 .reserve_users_area::-webkit-scrollbar-track {
-    background-color: #f0f2f5;
+    background-color: #F0F2F5;
+    border-radius: 5px;
 
 }
 
@@ -468,7 +592,7 @@ h1 {
 }
 
 .side_area {
-    height: 190px;
+    height: 115px;
 }
 
 .category-style {
@@ -503,17 +627,6 @@ h1 {
     background: #ecf1f6;
 }
 
-.search-btn {
-    border: none;
-    outline: none;
-    display: block;
-    margin-top: 15px;
-    width: 70%;
-    height: 44px;
-    background-color: #04a9d2;
-    color: #fff;
-    border-radius: 5px;
-}
 
 .subject-item {
     margin-top: 15px;
@@ -541,17 +654,39 @@ h1 {
     gap: 8px;
 }
 
+/* 権限ボタン */
+.engineer {
+    height: 35px;
+    width: 30%;
+    border: none;
+    outline: none;
+    background-color: #dee2e6;
+    border-radius: 10px;
+}
+
+/* 選択科目編集ボタン プロフィールページ */
 .subject_edit_btn {
     font-size: 12px;
-    color: #0000FF;
-    cursor: pointer;
+    color: #03aad2;
 }
 
 .subject_inner {
     display: none;
 }
 
+.subject_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.subject_item {
+    margin-top: 10px;
+}
+
+
 .category {
+    margin-left: 30px;
     margin-top: 20px;
 }
 
@@ -559,7 +694,9 @@ h1 {
 /* カテゴリーアコーディオン */
 /* ===================== */
 
+/* ☆掲示板アコーディオンメニュー */
 .accordion-list {
+    margin-left: 20px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -600,6 +737,125 @@ h1 {
     transition: transform 0.3s ease;
 }
 
+/* 開いたときに矢印を上向きにする */
+.accordion-toggle:checked+.accordion-label .arrow {
+    transform: rotate(-135deg);
+}
+
+
+/* ☆ユーザー検索アコーディオンメニュー*/
+
+/* ▼ 検索条件 見出し部分 */
+.search_conditions {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.search_arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg);
+    /* 下向き */
+    transition: transform 0.3s ease;
+}
+
+/* ▼ チェックされたら矢印を上向きに */
+.search_conditions_toggle:checked~.search_conditions .search_arrow {
+    transform: rotate(-135deg);
+    /* 上向き */
+}
+
+/* ▼ チェックボックスは非表示 */
+.search_conditions_toggle {
+    display: none;
+}
+
+/* ▼ 開閉するエリア（初期状態は閉じる） */
+.search_conditions_inner {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* ▼ チェックされたら開く */
+.search_conditions_toggle:checked~.search_conditions_inner {
+    max-height: 600px;
+    /* 中身に合わせて調整 */
+}
+
+.search_up {
+    margin-right: 105px;
+}
+
+/* ☆プロフィールページのアコーディオンメニュー */
+.profile_conditions {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    width: 250px;
+}
+
+/* ▼ チェックボックスは非表示 */
+.profile_conditions_toggle {
+    display: none;
+}
+
+/* ▼ チェックされたら矢印を上向きに */
+.profile_conditions_toggle:checked+label .profile_arrow {
+    transform: rotate(-135deg);
+}
+
+/* ▼ チェックされたらアコーディオンを開く */
+.profile_conditions_toggle:checked~.subject_inner {
+    max-height: 400px;
+    /* 必要に応じて大きさ調整 */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.profile_arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+    border-right: 2px solid #03aad2;
+    border-bottom: 2px solid #03aad2;
+    transform: rotate(45deg);
+    /* 下向き */
+    transition: transform 0.3s ease;
+}
+
+
+/* ユーザー検索矢印 */
+/* .search_conditions .search_arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 115px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+} */
+
+/* チェックされたら矢印が上向きになる */
+/* .search_conditions_toggle:checked~.search_arrow {
+    transform: rotate(-135deg);
+} */
+
+/* チェックボックス隠す */
+/* .search_conditions_toggle {
+    display: none;
+} */
+
+
 /* サブカテゴリ（初期は非表示） */
 .accordion-content {
     max-height: 0;
@@ -614,10 +870,6 @@ h1 {
     /* 開いたときの高さ。サブカテゴリ数に応じて調整 */
 }
 
-/* 開いたときに矢印を上向きにする */
-.accordion-toggle:checked+.accordion-label .arrow {
-    transform: rotate(-135deg);
-}
 
 /* サブカテゴリのリンク */
 .accordion-content li {

@@ -77,7 +77,12 @@
                     </select>
                 </div>
                 <div class="">
-                    <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+                    <input type="checkbox" id="search_toggle" class="search_conditions_toggle">
+                    <label for="search_toggle" class="m-0 search_conditions">
+                        <span class="search_up">検索条件の追加</span>
+                        <span class="search_arrow"></span>
+                    </label>
+
                     <div class="search_conditions_inner">
                         <div class="subject-item">
                             <label>性別</label>
