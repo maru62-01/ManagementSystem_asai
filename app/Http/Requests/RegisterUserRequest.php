@@ -30,7 +30,7 @@ class RegisterUserRequest extends FormRequest
             'under_name_kana' => 'required|regex:/^[ァ-ヶー]+$/u|max:30',
             'mail_address' => 'required|email|max:100|unique:users,mail_address',
             'sex' => 'required|in:1,2,3', // 男性=1, 女性=2, その他=3など
-            'old_year' => 'required|min:2000|max:' . date('Y'),
+            'old_year' => 'required|integer|min:2000|max:' . date('Y'),
             // integer→整数かどうか判断
             // max:' . date('Y'),→現在の年を取得してそれ以上であったらエラー
             'old_month' => 'required|min:1|max:12',
@@ -82,7 +82,7 @@ class RegisterUserRequest extends FormRequest
             'mail_address.unique' => 'そのメールアドレスはすでに使用されています。',
 
             'old_year.required' => '年を入力してください。',
-            // 'old_year.integer' => '年は数値で入力してください。',
+            'old_year.integer' => '年は数値で入力してください。',
             'old_year.min' => '2000年以降の年を入力してください。',
             'old_year.max' => '現在の年を入力してください。',
 
