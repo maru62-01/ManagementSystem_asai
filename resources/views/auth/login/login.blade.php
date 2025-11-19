@@ -16,7 +16,7 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="all_content">
     <h1><img class="atlas-icon" src="{{ asset('image/atlas-black.png') }}"></h1>
     <form action="{{ route('loginPost') }}" method="POST">
         <div class="w-100 d-flex" style="align-items:center; justify-content:center;">

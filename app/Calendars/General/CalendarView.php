@@ -31,8 +31,8 @@ class CalendarView
         $html[] = '<th>水</th>';
         $html[] = '<th>木</th>';
         $html[] = '<th>金</th>';
-        $html[] = '<th>土</th>';
-        $html[] = '<th>日</th>';
+        $html[] = '<th class="saturday">土</th>';
+        $html[] = '<th class="sunday">日</th>';
         $html[] = '</tr>';
         $html[] = '</thead>';
         $html[] = '<tbody>';
@@ -50,7 +50,7 @@ class CalendarView
                     // $startDay→月初めの日　&&かつ
                     // ↑今日より日付が小さかったら。
                     // 過去日 → グレー
-                    $html[] = '<td class="calendar-td past-days">';
+                    $html[] = '<td class="calendar-td past-days ' . $day->getClassName() . '">';
                 } else {
                     // 今日以降は従来通り
                     $html[] = '<td class="calendar-td ' . $day->getClassName() . '">';
@@ -71,7 +71,7 @@ class CalendarView
                         } else if ($reservePart == 3) {
                             $reservePart = "リモ3部参加";
                         }
-                        $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">' . $reservePart . '</p>';
+                        $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#000;">' . $reservePart . '</p>';
                         // hidden inputで部と日付を両方送る
                         $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
                         // $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
@@ -102,7 +102,7 @@ class CalendarView
                     // 予約がない場合
                     if ($startDay <= $day->everyDay() && $toDay >= $day->everyDay()) {
                         //【予約ナシ】過去日→(受付終了)の文字
-                        $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+                        $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:#000;">受付終了</p>';
                         $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
                     } else {
                         //【予約アリ】未来日→予約ボタン

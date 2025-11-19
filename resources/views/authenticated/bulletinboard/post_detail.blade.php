@@ -7,7 +7,7 @@
                     <div class="detail_inner_head">
                         @if ($post->subCategories->isNotEmpty())
                             {{-- isNotEmpty 空じゃない時 --}}
-                            <div class="mt-2">
+                            <div class="mt-2" style="margin-right: auto;">
                                 @foreach ($post->subCategories as $subCategory)
                                     <span class="badge badge-primary text-white" style="background-color: #03aad2;">
                                         {{ $subCategory->sub_category }}

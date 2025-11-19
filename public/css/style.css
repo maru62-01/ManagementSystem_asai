@@ -55,6 +55,7 @@ h1 {
 
 /*  ログインページ*/
 .input-shadow {
+    background-color: #fff;
     box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
     /* 丸みを持たせる */
     border-radius: 10px;
@@ -125,6 +126,7 @@ h1 {
     background: #EEE;
 }
 
+
 .past-days {
     background-color: #e0e0e0;
 }
@@ -150,6 +152,16 @@ h1 {
 .adjust-table-btn {
     width: 70%;
 }
+
+/* 予約登録の土日 */
+.saturday {
+    color: #0000FF;
+}
+
+.sunday {
+    color: #FF0000;
+}
+
 
 /* モーダル */
 .modal {
@@ -563,8 +575,16 @@ h1 {
     height: 250px;
 }
 
+.one_person_space {
+    margin-left: 30px;
+}
+
 .id_space {
     margin-top: 20px;
+}
+
+.weight {
+    font-weight: bold;
 }
 
 .search_word {
