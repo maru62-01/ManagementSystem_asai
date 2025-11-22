@@ -18,7 +18,8 @@
 
 <body class="all_content">
     <form action="{{ route('registerPost') }}" method="POST">
-        <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
+        <div class="w-100 d-flex" style="align-items:center; justify-content:center;">
+            {{-- vh-100は削除 --}}
             <div class="w-25 border p-3 input-shadow">
                 <div class="register_form">
                     <div class="d-flex mt-3" style="justify-content:space-between">
